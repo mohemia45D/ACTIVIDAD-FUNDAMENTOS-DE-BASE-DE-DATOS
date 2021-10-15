@@ -1,0 +1,53 @@
+CREATE DATABASE ejercicio5;
+
+USE  ejercicio5;
+
+CREATE TABLE activations (
+	code INT NOT  NULL AUTO_INCREMENT,
+	email VARCHAR(100) NOT NULL, 
+    nick VARCHAR(45) NOT NULL, 
+	PRIMARY KEY(code)
+);
+
+CREATE TABLE usuarios (
+	id_user INT NOT NULL AUTO_INCREMENT,
+	nom_user VARCHAR(100) NOT NULL,
+	pass_user VARCHAR(45) NOT NULL,
+	level VARCHAR(45) NOT NULL, 
+    nombre_user VARCHAR(100) NOT NULL, 
+    apell_user VARCHAR(100) NOT NULL, 
+    email_user VARCHAR(45) NOT NULL, 
+    active VARCHAR(10) NOT NULL, 
+	PRIMARY KEY(id_user)
+);
+
+CREATE TABLE asignador_codigo (
+	codigo INT NOT NULL AUTO_INCREMENT,
+PRIMARY KEY(codigo)
+);
+
+CREATE TABLE empresa (
+	cod_empr INT NOT NULL AUTO_INCREMENT,
+    nom_empr VARCHAR(45) NULL,
+    mision_empr VARCHAR(1000) NULL,
+    vision_empr VARCHAR(1000) NULL,
+    nit VARCHAR(150) NULL,
+    rep_legal VARCHAR(150) NULL,
+    camp_comer VARCHAR(150) NULL,
+    telefono_1 VARCHAR(150) NULL,
+    telefono_2 VARCHAR(150) NULL,
+    direcion VARCHAR(150) NULL,
+    email VARCHAR(150) NULL, 
+	website VARCHAR(150) NULL,
+PRIMARY KEY(cod_empr)
+);
+
+CREATE TABLE objetivos (
+	cod_empr INT NOT NULL AUTO_INCREMENT,
+    objgen VARCHAR(500) NOT NULL,
+    obj1 VARCHAR(500) NULL,
+    obj2 VARCHAR(500) NULL,
+    obj3 VARCHAR(500) NULL,
+    obj4 VARCHAR(500) NULL,
+PRIMARY KEY(cod_empr)
+);
