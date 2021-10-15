@@ -1,0 +1,56 @@
+CREATE DATABASE ejercicio4;
+USE ejercicio4;
+
+CREATE TABLE clientes(
+	dni  INT NOT NULL AUTO_INCREMENT,
+	nombre VARCHAR(45) NOT NULL, 
+	apellido VARCHAR(45) NOT NULL,
+    codigoPostal INT NOT NULL,
+    direccion VARCHAR(45) NOT NULL,
+    telefonoFijo VARCHAR(45)  NULL,
+    telefonoCelular VARCHAR(45)  NULL,
+    correo VARCHAR(100)  NULL,
+    PRIMARY KEY(dni)
+);
+
+CREATE TABLE productos(
+	idProducto INT NOT NULL AUTO_INCREMENT,
+	marca VARCHAR(45) NOT NULL, 
+	talle VARCHAR(45) NOT NULL,
+    precio DOUBLE NOT NULL,
+    stock INT NOT NULL,
+    PRIMARY KEY(idProducto)
+);
+
+CREATE TABLE proveedores(
+	idProveedor INT NOT NULL AUTO_INCREMENT,
+	nroPuesto INT NOT NULL, 
+	nombre VARCHAR(45) NOT NULL,
+    apellido VARCHAR(45) NOT NULL,
+    codigoPostal INT NOT NULL,
+    direccion VARCHAR(45) NOT NULL,
+    telefonoFijo VARCHAR(45)  NULL,
+    telefonoCelular VARCHAR(45)  NULL,
+    correo VARCHAR(100)  NULL,
+    PRIMARY KEY(idProveedor)
+);
+
+CREATE TABLE ventas(
+	idVenta INT NOT NULL AUTO_INCREMENT,
+	fecha DATETIME, 
+    idProducto INT NOT NULL,
+	INDEX (idProducto),
+	FOREIGN KEY (idProducto) REFERENCES productos(idProducto),
+    dni INT NOT NULL AUTO_INCREMENT,
+	INDEX (dni),
+	FOREIGN KEY (dni) REFERENCES clientes(dni),
+    monto DOUBLE NOT  NULL,
+    formaPago VARCHAR(45) NOT NULL,
+    PRIMARY KEY(idVenta)
+);
+
+CREATE TABLE codigosPostales(
+	codigoPostal INT NOT NULL,
+	localidad VARCHAR(45) NOT NULL, 
+    PRIMARY KEY(localidad)
+);
