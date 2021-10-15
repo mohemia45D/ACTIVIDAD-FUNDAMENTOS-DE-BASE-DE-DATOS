@@ -1,0 +1,44 @@
+CREATE DATABASE ejer6;
+
+USE ejer6;
+
+CREATE TABLE genero(
+	idgenero INT NOT NULL AUTO_INCREMENT,
+	descripcion VARCHAR(45) NOT NULL,
+	PRIMARY KEY(idgenero)
+);
+
+CREATE TABLE generosgrupos(
+	idgrupo INT NOT NULL ,
+	idgenero INT NOT NULL ,
+	PRIMARY KEY(idgrupo),
+    PRIMARY KEY(idgenero)
+);
+
+CREATE TABLE grupo(
+	idgrupo INT NOT NULL AUTO_INCREMENT,
+	nombre VARCHAR(45) NOT NULL,
+    formacion DATE,
+    desintegracion DATE,
+	PRIMARY KEY(idgrupo)
+);
+
+CREATE TABLE musicosgrupos(
+	idgrupo INT NULL,
+    idmusico INT NULL,
+	instrumento VARCHAR(45) NOT NULL,
+    fechainicio DATE,
+    fechafin DATE,
+	PRIMARY KEY(idgrupo),
+    PRIMARY KEY(idmusico)
+);
+
+CREATE TABLE musico(
+    idmusico INT NOT NULL AUTO_INCREMENT,
+    nombre VARCHAR(45) NOT NULL,
+	instrumento VARCHAR(45) NOT NULL,
+    lugarnacimiento VARCHAR(45) NULL,
+    fechanacimiento DATE,
+    fechamuerte DATE,
+    PRIMARY KEY(idmusico)
+);
