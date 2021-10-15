@@ -1,0 +1,68 @@
+CREATE DATABASE ejercicio2;
+
+USE  ejercicio2;
+
+CREATE TABLE cliente(
+	id_cliente INT NOT NULL AUTO_INCREMENT,
+	nombre VARCHAR(45)  NULL,
+    apellido VARCHAR(45)  NULL,
+    codigoPostal INT  NULL,
+    direccion VARCHAR(45)  NULL,
+    fecha_nacimiento DATETIME  NULL, 
+    telefono VARCHAR(45)  NULL,
+    email VARCHAR(45)  NULL,
+	PRIMARY KEY(id_cliente)
+);  
+
+CREATE TABLE modo_pago(
+	num_pago INT NOT NULL AUTO_INCREMENT,
+    nombre VARCHAR(45)  NULL,
+    otros_detalles VARCHAR(45)  NULL,
+	PRIMARY KEY(num_pago)
+);
+
+CREATE TABLE categoria(
+	id_categoria INT NOT NULL AUTO_INCREMENT,
+    nombre VARCHAR(45)  NULL,
+    descripcion VARCHAR(45)  NULL,
+	PRIMARY KEY(id_categoria)
+);
+
+CREATE TABLE factura(
+	num_factura INT NOT NULL AUTO_INCREMENT,
+    -- Agregar clave foránea de cliente
+    id_cliente INT NOT NULL,
+	INDEX(id_cliente),
+	FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente),
+    fecha DATETIME NULL,
+     -- Agregar clave foránea de modo_pago
+    num_pago INT NOT NULL,
+	INDEX(num_pago),
+	FOREIGN KEY (num_pago) REFERENCES modo_pago(num_pago),
+	PRIMARY KEY(num_factura)
+);
+
+CREATE TABLE producto(
+	id_producto INT NOT NULL AUTO_INCREMENT,
+    nombre VARCHAR(45)  NULL,
+    precio INT  NULL,
+    stock INT  NULL,
+    -- Agregar clave foránea de categoria
+    id_categoria INT NOT NULL,
+	INDEX(id_categoria),
+	FOREIGN KEY (id_categoria) REFERENCES categoria(id_categoria),
+    fecha DATETIME NULL,
+	PRIMARY KEY(id_producto)
+);
+
+CREATE TABLE detalle(
+	num_detalle INT NOT NULL AUTO_INCREMENT,
+    id_factura INT NOT NULL ,
+    -- Agregar clave foránea de producto
+    id_producto INT NOT NULL,
+	INDEX(id_producto),
+	FOREIGN KEY (id_producto) REFERENCES producto(id_producto),
+	cantidad INT NOT NULL,
+    precio INT NOT NULL,
+	PRIMARY KEY(num_detalle, id_factura)
+);
