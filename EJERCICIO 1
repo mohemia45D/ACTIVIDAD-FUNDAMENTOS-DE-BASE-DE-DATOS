@@ -1,0 +1,38 @@
+CREATE DATABASE ejercicio1;
+
+USE  ejercicio1;
+
+CREATE TABLE language(
+	name INT NOT NULL AUTO_INCREMENT,
+	PRIMARY KEY(name)
+);    
+
+CREATE TABLE department(
+	id INT NOT NULL AUTO_INCREMENT,
+	name VARCHAR(50) NOT NULL,
+    company_code INT NOT NULL,
+	PRIMARY KEY(id)
+);  
+
+CREATE TABLE employee(
+	id INT NOT NULL AUTO_INCREMENT,
+	name VARCHAR(50) NOT NULL,
+    -- Agregar clave foránea de language
+    language_id INT NOT NULL,
+	INDEX(language_id),
+	FOREIGN KEY (language_id) REFERENCES language(name),
+	PRIMARY KEY(id)
+);
+
+CREATE TABLE  employee_department(
+	id INT NOT NULL AUTO_INCREMENT,
+    -- Agregar clave foránea de employee
+    employee_id INT NOT NULL,
+	INDEX(employee_id),
+	FOREIGN KEY (employee_id) REFERENCES employee(id),
+    -- Agregar clave foránea depaertment
+    depaertment_id INT NOT NULL,
+	INDEX(depaertment_id),
+	FOREIGN KEY (depaertment_id) REFERENCES department(id),
+	PRIMARY KEY(id)
+);
