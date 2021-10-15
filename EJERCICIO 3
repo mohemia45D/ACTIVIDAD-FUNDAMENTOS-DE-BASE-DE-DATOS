@@ -1,0 +1,43 @@
+CREATE DATABASE ejercicio3;
+
+USE  ejercicio3;
+
+CREATE TABLE seat(
+seat_number INT  NULL,
+seat_position VARCHAR(45)  NULL,
+PRIMARY KEY(id_cliente)
+);
+
+CREATE TABLE seat(
+seat_number INT NOT NULL AUTO_INCREMENT,
+seat_position VARCHAR(45)  NULL,
+PRIMARY KEY(seat_number )
+);
+
+CREATE TABLE student(
+student_id INT NOT NULL AUTO_INCREMENT,
+student_name VARCHAR(45)  NULL,
+student_address VARCHAR(45)  NULL,
+PRIMARY KEY(student_id)
+);
+
+CREATE TABLE course(
+course_name VARCHAR(45)  NULL,
+student_number VARCHAR(45)  NULL,
+PRIMARY KEY(course_name)
+);
+
+CREATE TABLE course(
+course_name VARCHAR(45)  NULL,
+student_number VARCHAR(45)  NULL,
+PRIMARY KEY(course_name)
+);
+
+CREATE TABLE class(
+course_name VARCHAR(45)  NULL,
+section_number VARCHAR(45)  NULL,
+num_registered VARCHAR(45)  NULL,
+class_date_time DATETIME NULL,
+PRIMARY KEY(course_name)
+);
+
